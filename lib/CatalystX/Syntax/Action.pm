@@ -42,20 +42,21 @@ sub parse_proto {
 
 =head1 NAME
 
-CatalystX::Syntax::Action - Semantically meaningfull Catalyst Actions with signatures
+CatalystX::Syntax::Action - Semantically meaningful Catalyst Actions with signatures
 
 =head1 SYNOPSIS
 
     package MyApp::Controller::Foo;
 
     use Moose;
+    use CatalystX::Syntax::Action;
     use namespace::autoclean;
 
     extends 'Catalyst::Controller';
 
     action my_action($arg) : Path('my_special_action') Args(1)
     {
-        $ctx->response->body('Look ma, no "my ($self, $ctx, $arg) = @_;"
+      $ctx->response->body('Look ma, no "my ($self, $ctx, $arg) = @_;"
     }
 
     __PACKAGE__->meta->make_immutable;
@@ -108,7 +109,7 @@ would allow you to easily and cleanly enable multiple extenstions.  For example:
     package MyApp::Web::Controller::Root;
 
     use Moose;
-    use syntax 'method', 'action';
+    use syntax 'method', 'catalyst_action';
 
     extends 'Catalyst::Controller'l
 
