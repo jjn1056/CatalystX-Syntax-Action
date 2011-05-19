@@ -11,9 +11,6 @@ sub import {
   my $class = shift;
   my $caller = caller;
   my %opts = $class->_set_defaults($caller,@_);
-
-
-
   $class->install_methodhandler(name=>'action', %opts);
 }
 
@@ -22,7 +19,6 @@ sub _set_defaults {
   $opts{into} ||= $caller;
   $opts{invocant} ||= '$self';
   $opts{context} ||= '$ctx';
-
   return %opts;
 }
 
