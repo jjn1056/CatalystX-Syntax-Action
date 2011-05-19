@@ -1,7 +1,10 @@
 package Syntax::Feature::CatalystAction;
 
+use 5.008008;
 use strict;
 use warnings FATAL =>'all';
+
+our $VERSION = '0.01';
 
 use CatalystX::Syntax::Action ();
 use B::Hooks::EndOfScope;
@@ -9,6 +12,8 @@ use Carp ();
 use namespace::clean;
 
 $Carp::Internal{ +__PACKAGE__ }++;
+
+our $VERSION = '0.01';
 
 sub install {
   my ($class, %args) = @_;
@@ -34,7 +39,6 @@ sub install {
 =head1 NAME
 
 Syntax::Feature::CatalystAction - Provide an action keyword to Catalyst Controllers
-
 
 =head1 SYNOPSIS
 

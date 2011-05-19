@@ -1,9 +1,10 @@
 package CatalystX::Syntax::Action;
 
+use 5.008008;
+use parent 'Devel::Declare::MethodInstaller::Simple';
+
 use strict;
 use warnings FATAL =>'all';
-
-use parent 'Devel::Declare::MethodInstaller::Simple';
 
 our $VERSION = '0.01';
 
