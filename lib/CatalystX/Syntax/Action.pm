@@ -5,14 +5,25 @@ use warnings FATAL =>'all';
 
 use parent 'Devel::Declare::MethodInstaller::Simple';
 
+our $VERSION = '0.01';
+
 sub import {
   my $class = shift;
-  my %opts  = @_;
+  my $caller = caller;
+  my %opts = $class->_set_defaults($caller,@_);
 
-  $opts{into} ||= caller;
+
+
+  $class->install_methodhandler(name=>'action', %opts);
+}
+
+sub _set_defaults {
+  my ($class, $caller, %opts) = @_;
+  $opts{into} ||= $caller;
   $opts{invocant} ||= '$self';
   $opts{context} ||= '$ctx';
-  $class->install_methodhandler(name=>'action', %opts);
+
+  return %opts;
 }
 
 sub parse_proto {
