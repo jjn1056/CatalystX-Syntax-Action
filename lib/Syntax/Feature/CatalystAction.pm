@@ -42,7 +42,7 @@ Syntax::Feature::CatalystAction - Provide an action keyword to Catalyst Controll
 
 =head1 SYNOPSIS
 
-    package MyApp::Controller::Foo;
+    package MyApp::Web::Controller::Foo;
 
     use Moose;
     use namespace::autoclean;
@@ -60,7 +60,23 @@ Syntax::Feature::CatalystAction - Provide an action keyword to Catalyst Controll
 =head1 DESCRIPTION
 
 This module is a L<syntax> compatible wrapper for L<CatalystX::Syntax::Action>.
-Please see that module for documentation and examples.
+Please see that module for documentation and examples.  The main reason you 
+might wish to use this instead is that it makes it easier to install multiple
+syntax extensions at once.  For example:
+
+    package MyApp::Web::Controller::Foo;
+
+    use Moose;
+    use syntax qw(method function catalyst_action);
+
+    extends 'Catalyst::Controller';
+
+    action my_action: Action { ... }
+
+    method my_method {
+      ...
+      return function($arg1, $arg2) { ... };
+    }
 
 =head1 AUTHOR
 

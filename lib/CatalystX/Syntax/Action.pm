@@ -47,7 +47,7 @@ CatalystX::Syntax::Action - Semantically meaningful Catalyst Actions with signat
 
 =head1 SYNOPSIS
 
-    package MyApp::Controller::Foo;
+    package MyApp::Web::Controller::Foo;
 
     use Moose;
     use CatalystX::Syntax::Action;
@@ -71,6 +71,9 @@ argument, saving you a bit of boilerplate.  Additionally you might find that
 calling an action 'action' more meaningfully separates it visually from methods
 in your L<Catalyst::Controller> that are normal methods.
 
+On the other hand, it might break some IDE highlighting and so forth.  Buyer
+beware.
+
 The test suite has a working example of this for your review.
 
 =head1 CAVEATS
@@ -91,7 +94,7 @@ Would need to be modified (as say in a ControllerRole) using:
     };
 
 This is because we can't detect the fact that C<$orig> as the first argument is
-a coderef to the modified method rather than a blessed reference to the instance
+a coderef to the modified method rather than a blessed reference to an instance
 of L<Catalyst::Controller>.  If you are attached to the method signatures in
 your code you could use L<Function::Parameters>:
 
@@ -112,7 +115,7 @@ would allow you to easily and cleanly enable multiple extenstions.  For example:
     use Moose;
     use syntax 'method', 'catalyst_action';
 
-    extends 'Catalyst::Controller'l
+    extends 'Catalyst::Controller';
 
     action myaction { ... }
     method mymethod { ...}
@@ -122,7 +125,9 @@ would allow you to easily and cleanly enable multiple extenstions.  For example:
 =head1 THANKS
 
 I basically just copied the known working code in L<Method::Signatures::Simple>
-to make this.  My thanks to the authors and maintainers!
+to make this.  I also pretty much copied L<Syntax::Feature::Method>.  My thanks
+to the authors and maintainers of those modules.  I wouldn't have such a decent
+low version offering without that stuff to guide me.
 
 =head1 AUTHOR
 
@@ -130,7 +135,8 @@ John Napiorkowski L<email:jjnapiork@cpan.org>
 
 =head1 SEE ALSO
 
-L<Catalyst>, L<Method::Signatures::Simple>, L<syntax>, L<Devel::Declare>
+L<Catalyst>, L<Method::Signatures::Simple>, L<syntax>, L<Devel::Declare>,
+L<Syntax::Feature::Method>.
 
 =head1 COPYRIGHT & LICENSE
 
