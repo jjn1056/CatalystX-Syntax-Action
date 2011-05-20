@@ -13,8 +13,6 @@ use namespace::clean;
 
 $Carp::Internal{ +__PACKAGE__ }++;
 
-our $VERSION = '0.01';
-
 sub install {
   my ($class, %args) = @_;
   my $target = $args{into};
